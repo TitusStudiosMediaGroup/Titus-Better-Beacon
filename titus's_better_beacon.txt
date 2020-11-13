@@ -4,29 +4,31 @@
 @persist 
 @trigger On
 
+if(dupefinished()){ reset() }
 if(first()){
     
     E = entity()
+    local Scale = vec(0.5)
     
     A = 1
     holoCreate(A)
     holoParent(A,E)
     holoColor(A,vec(255))
-    holoScale(A,vec(0.9))
+    holoScale(A,vec(0.9)*Scale)
     holoModel(A, "models/titus's_propper_model_pack_2.4/propper/mu_plugs/mu_socket_27pin.mdl")
     holoMaterial(A,"models/proppertextures/aluminum")
     holoPos(A,E:toWorld(vec(0,0,0)))
     holoAng(A,E:toWorld(ang(0,0,90))) 
     holoClipEnabled(A,1,1)
-    holoClip(A,1,vec(0,2,0),vec(0,-1,0),0)
+    holoClip(A,1,vec(0,2,0)*Scale,vec(0,-1,0),0)
         
     A = 2
     holoCreate(A)
     holoParent(A,E)
     holoColor(A,vec(255))
-    holoScale(A,vec(0.65,0.65,0.9)*0.9)
+    holoScale(A,vec(0.65,0.65,0.9)*0.9*Scale)
     holoModel(A, "models/anytrains/props/detail/beacon.mdl")
-    holoPos(A,E:toWorld(vec(0,0,2)))
+    holoPos(A,E:toWorld(vec(0,0,2)*Scale))
     holoAng(A,E:toWorld(ang(0,0,0)))     
     holoBodygroup(A,3,1)
     holoBodygroup(A,4,2)
@@ -36,9 +38,9 @@ if(first()){
     holoCreate(A)
     holoParent(A,E)
     holoColor(A,vec(255))
-    holoScale(A,vec(0.65,0.65,0.9)*0.8)
+    holoScale(A,vec(0.65,0.65,0.9)*0.8*Scale)
     holoModel(A, "models/anytrains/props/detail/beacon.mdl")
-    holoPos(A,E:toWorld(vec(0,0,2)))
+    holoPos(A,E:toWorld(vec(0,0,2)*Scale))
     holoAng(A,E:toWorld(ang(0,0,0)))     
     holoBodygroup(A,3,1)
     holoBodygroup(A,4,2)
@@ -47,7 +49,7 @@ if(first()){
     holoEntity(A):setSubMaterial(3,"models/proppertextures/bulb_orange_unlit")
     holoAlpha(A,254)
     
-    spriteSpawn(1,"sprites/light_glow01.vmt",E:toWorld(vec(0,0,6)),vec(247,155,60),255,2)
+    spriteSpawn(1,"sprites/light_glow01.vmt",E:toWorld(vec(0,0,6)*Scale),vec(247,155,60),255,2)
     spriteEnable(1,0)
 }
 
